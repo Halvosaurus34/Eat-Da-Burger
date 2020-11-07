@@ -1,30 +1,37 @@
-<h1>Eat-Da-Burger!</h1>
-
+<div class="container">
+<h1 class="display-4">Eat-Da-Burger!</h1>
+<h3>Devoured</h3>
 <ul>
-  {{#each burger}}
+  {{#each devoured}}
   <li>
     <p>
-      {{this.burgerName}}. {{this.devoured}}
-
-      <button data-planid="{{this.id}}" class="delplan">Delete Plan!</button>
+      {{this.burger_name}}
     </p>
   </li>
   {{/each}}
 </ul>
+<h3>Waiting to be devoured</h3>
+<ul>
+  {{#each notDevoured}}
+  <li>
+    <p>
+      {{this.burger_name}}
+        <button id="eatButton{{this.id}}">Eat Burger</button>
 
-<h2>Create a Plan</h2>
-<form id="createplan" class="button-size">
-  <textarea type="text" name="plan"></textarea>
-  <button type="submit">Save Plan!</button>
+    </p>
+  </li>
+  {{/each}}
+</ul>
+<h2>Add a Burger</h2>
+<form class="create-form">
+
+  <div class="form-group">
+    <label for="ca">Burger Name:</label>
+    <input type="text" id="burgerName" name="burgerName">
+  </div>
+
+  <button type="submit" onClick="addBurger($('#burgerName').val())">Add Burger</button>
 </form>
 
-<h2>Update a Plan</h2>
-<form id="updateplan" class="button-size">
-  <select name="id">
-		{{#each plans}}
-			<option value="{{this.id}}">{{this.plan}}</option>
-		{{/each}}
-	</select>
-  <textarea type="text" name="plan" placeholder="plan"></textarea>
-  <button type="submit">Update Plan!</button>
-</form>
+
+</div>

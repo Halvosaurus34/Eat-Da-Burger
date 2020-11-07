@@ -5,8 +5,9 @@ async function selectAll(){
     return allBurgers
 }
 
-async function insertOne(burgerName, devoured){
-    const insertBurgers = await orm.insertOne(burgerName, devoured)
+async function insertOne(burgerName){
+    console.log("BURGER NAME: ", burgerName)
+    const insertBurgers = await orm.insertOne(burgerName)
     return insertBurgers
 }
 

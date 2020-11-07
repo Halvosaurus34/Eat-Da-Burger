@@ -10,15 +10,16 @@ function findOne(burgerName) {
     return db.query( queryString, [burgerName])
 }
 
-function insertOne(burgerName, devoured) {
-    const queryString = "INSERT INTO burgers (?, ?)";
+function insertOne(burgerName) {
+  console.log("ORM BURGER NAME: ", burgerName)
+    const queryString = "INSERT INTO burgers (burger_name) VALUES (?)";
     console.log(queryString);
-    return db.query( queryString, [burgerName, devoured] );
+    return db.query( queryString, [burgerName] );
 }
 
 function updateOne(burgerName, devoured, burgerId) {
     const queryString =
-      "UPDATE burgers SET burger_name = '?', devoured = '?' WHERE id = '?";
+      "UPDATE burgers SET burger_name = '?', devoured = '?' WHERE id = (?)";
 
     return db.query(
     queryString,

@@ -1,47 +1,64 @@
 const express = require('express')
 const burger = require('../models/burger')
+let devoured = []
+let notDevoured = []
 
-var router = express.Router();
+function router( app ){
+    app.get('/', async function( req, res ){
+        console.log("GETALL")
+        devoured = []
+        notDevoured = []
+        const burgerData = await burger.selectAll();
+        // console.log( '[/api/burger] burgerData: ', burgerData);
+        burgerData.forEach(element => {
+            if(element.devoured == 0){
+                notDevoured.push(element)
+            } else{
+                devoured.push(element)
+            }
+        });
+        console.log("DEVOURED ARRAY:",devoured)
+        console.log("notDevoured array: ", notDevoured)
+        if( !burgerData ){
+            return res.send( { status: false, message: 'Sorry unknown user or wrong password' } );
+        }
 
-router.get('/', async function( req, res ){
-    const burgerData = await burger.selectAll();
-    console.log( '[/api/burger] burgerData: ', burgerData);
-    if( !burgerData ){
-        return res.send( { status: false, message: 'Sorry unknown user or wrong password' } );
-    }
+        // console.log('Retreived Burger Data!', burgerData);
+        res.render("index", {devoured: devoured, notDevoured: notDevoured})
+        // res.send(burgerData)
+                    
+        });
 
-    console.log('Retreived Burger Data!', burgerData);
-    res.send({ status: true, ...userData });
-});
+    app.post('/api/burger/insert', async function( req, res ){
+        const burgerName = req.body.burgerName
+        // console.log("req.body", req.body.burgerName)
 
-router.post('/api/burger/insert', async function( req, res ){
-    const burgerName = req.body.burgerName
-    const devoured = req.body.devoured
+        const insertBurger = await burger.insertOne(burgerName);
+        // console.log( 'INSERT BURGER', insertBurger );
 
-    const insertBurger = await burger.insertOne(burgerName, devoured);
-    console.log( 'INSERT BURGER', insertBurger );
+        if( !insertBurger ){
+            return res.send( { status: false, message: 'Sorry failed to create the burger, try later?' } );
+        }
 
-    if( !insertBurger ){
-        return res.send( { status: false, message: 'Sorry failed to create the burger, try later?' } );
-    }
+        res.send("INSERT BURGER");
+    } );
 
-    res.send( { status: true, message: `Burger has been created!` } );
-} );
+    // app.post( '/api/burger/update', async function( req, res ){
+    //     console.log("UPDATE BURGER")
+    //     // const burgerName = req.body.burgerName
+    //     // const devoured = req.body.burgerName
+    //     // const burgerId = await burger.findId(burgerName)
+    //     // console.log("BURGER ID: ", burgerId)
+    //     // const updateBurger = await burger.updateOne(burgerName, devoured, burgerId[0].id);
+    //     // console.log( 'UPDATE BURGER', updateBurger );
 
-router.post( '/api/burger/update', async function( req, res ){
-    const burgerName = req.body.burgerName
-    const devoured = req.body.burgerName
-    const burgerId = await burger.findId(burgerName)
-    console.log("BURGER ID: ", burgerId)
-    const updateBurger = await burger.updateOne(burgerName, devoured, burgerId[0].id);
-    console.log( 'UPDATE BURGER', updateBurger );
+    //     // if( !updateBurger ){
+    //     //     return res.send( { status: false, message: 'Sorry failed to create the user, try later?' } );
+    //     // }
 
-    if( !updateBurger ){
-        return res.send( { status: false, message: 'Sorry failed to create the user, try later?' } );
-    }
+    //     res.send( "UPDATE BURGER");
+    // } );
 
-    res.send( { status: true, message: `Updated Burger!` } );
-} );
-
+}
 
 module.exports = router;
