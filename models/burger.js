@@ -15,4 +15,11 @@ async function updateOne(burgerName, devoured, burgerId){
     return insertBurgers
 }
 
-module.exports = { updateOne, insertOne, selectAll }
+async function findOne(burgerName){
+    const findBurger = await orm.findOne(burgerName)
+    return findBurger
+}
+
+
+
+module.exports = { updateOne, insertOne, selectAll, findOne }

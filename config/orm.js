@@ -5,6 +5,11 @@ function selectAll() {
     return db.query( queryString)
 }
 
+function findOne(burgerName) {
+    const queryString = "SELECT * FROM burgers WHERE burger_name = '?;"
+    return db.query( queryString, [burgerName])
+}
+
 function insertOne(burgerName, devoured) {
     const queryString = "INSERT INTO burgers (?, ?)";
     console.log(queryString);
@@ -24,4 +29,4 @@ function closeORM(){
   return db.close()
 }
 
-module.exports = { updateOne, insertOne, selectAll, closeORM }
+module.exports = { updateOne, insertOne, selectAll, closeORM, findOne }

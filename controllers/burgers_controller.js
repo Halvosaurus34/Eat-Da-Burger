@@ -29,15 +29,18 @@ function router( app ){
     } );
 
     app.post( '/api/burger/update', async function( req, res ){
+        const burgerName = req.body.burgerName
+        const devoured = req.body.burgerName
+        const burgerId = await burger.findId(burgerName)
+        console.log("BURGER ID: ", burgerId)
+        const updateBurger = await burger.updateOne(burgerName, devoured, burgerId[0].id);
+        console.log( 'UPDATE BURGER', updateBurger );
 
-        const updateBurger = await burger.updateOne(userData);
-        console.log( ' created user [orm.registerUser]: userId=', userId );
-
-        if( !userId ){
+        if( !updateBurger ){
             return res.send( { status: false, message: 'Sorry failed to create the user, try later?' } );
         }
 
-        res.send( { status: true, message: `You are registered (userId: #${userId})!` } );
+        res.send( { status: true, message: `Updated Burger!` } );
     } );
 
 }
