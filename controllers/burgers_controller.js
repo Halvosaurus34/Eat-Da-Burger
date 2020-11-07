@@ -1,9 +1,9 @@
 const express = require('express')
 const burger = require('../models/burger')
 
+
 function router( app ){
-    // == user ==
-    app.get('/api/burger', async function( req, res ){
+    app.get('/', async function( req, res ){
         const burgerData = await burger.selectAll();
         console.log( '[/api/burger] burgerData: ', burgerData);
         if( !burgerData ){
@@ -14,7 +14,7 @@ function router( app ){
         res.send({ status: true, ...userData });
     });
 
-    app.post( '/api/burger/insert', async function( req, res ){
+    app.post('/api/burger/insert', async function( req, res ){
         const burgerName = req.body.burgerName
         const devoured = req.body.devoured
 
