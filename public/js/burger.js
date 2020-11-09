@@ -4,6 +4,6 @@ async function addBurger(burgerName){
     console.log(result)
 }
 
-async function eatBurger(burgerName, devoured, burgerId){
-    console.log("EATING BURGER: ",burgerName, devoured, burgerId)
+async function eatBurger(burgerName, burgerId){
+    console.log("EATING BURGER: ",burgerName, burgerId)
 }
