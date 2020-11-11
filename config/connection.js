@@ -24,7 +24,7 @@ class Database {
   }
 
 var db;
-// console.log("JAWS INFO: ", process.env)
+console.log("JAWS INFO: ", process.env)
 if (process.env.JAWSDB_URL) {
     db = mysql.createConnection(process.env.JAWSDB_URL);
 } else {
