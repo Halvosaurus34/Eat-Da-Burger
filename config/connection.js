@@ -1,4 +1,6 @@
 const mysql = require( 'mysql' );
+console.log("JAWS INFO: ", process.env.JAWSDB_URL)
+
 class Database {
     constructor( config ) {
         this.connection = mysql.createConnection( config );
@@ -24,7 +26,6 @@ class Database {
   }
 
 var db;
-console.log("JAWS INFO: ", process.env)
 if (process.env.JAWSDB_URL) {
     db = new Database(process.env.JAWSDB_URL);
 } else {
