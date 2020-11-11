@@ -14,7 +14,7 @@ Eat-Da-Burger! is a restaurant app that lets users input the names of burgers th
 
 ## 💥 Issues
 
-The main challenges were figuring out how to manipuate the JSON database without changing the content. I learned alot about express, fs, uuid, json when trying to make this project work.
+The main challenges were figuring out how to use handlebars in parallell with mySQL. Getting the routes right and getting that info to display with handlebars was hard. 
 
 ## 🍤 Contribution:
 
@@ -50,7 +50,7 @@ For additional questions please reach out to me at: lhalvorson34@gmail.com.
 
 ---
 
-I used [Express](https://www.npmjs.com/package/express), [UUID](https://www.npmjs.com/package/uuid), [fs](https://www.w3schools.com/nodejs/nodejs_filesystem.asp) to build this web app.
+I used [Express](https://www.npmjs.com/package/express), [mySQL](https://dev.mysql.com/doc/) and [Handlebars](https://handlebarsjs.com/) to build this web app.
 
 ---
 
