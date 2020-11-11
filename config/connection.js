@@ -1,6 +1,4 @@
 const mysql = require( 'mysql' );
-
-// use this wrapper to create promise around mysql
 class Database {
     constructor( config ) {
         this.connection = mysql.createConnection( config );
@@ -24,13 +22,19 @@ class Database {
         } );
     }
   }
-// at top INIT DB connection
-const db = new Database({
-    host: "localhost",
-    port: 3306,
-    user: "root",
-    password: "KpkhcBk3PL4n",
-    database: "burgers_db"
-  });
+
+var db;
+
+if (process.env.JAWSDB_URL) {
+    db = mysql.createConnection(process.env.JAWSDB_URL);
+} else {
+    db = new Database({
+        host: "localhost",
+        port: 3306,
+        user: "root",
+        password: "KpkhcBk3PL4n",
+        database: "burgers_db"
+      });
+}
 
 module.exports = db;
