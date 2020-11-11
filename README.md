@@ -6,7 +6,7 @@ Eat-Da-Burger! is a restaurant app that lets users input the names of burgers th
 
 ## 🍔 Getting started
 
-#### Cloning
+####  🐑 Cloning
 
 1. [Fork this repository](https://help.github.com/en/articles/fork-a-repo).
 1. [Clone the forked repository](https://help.github.com/en/articles/cloning-a-repository) locally
@@ -16,7 +16,7 @@ Eat-Da-Burger! is a restaurant app that lets users input the names of burgers th
 
 The main challenges were figuring out how to manipuate the JSON database without changing the content. I learned alot about express, fs, uuid, json when trying to make this project work.
 
-## Contribution:
+## 🍤 Contribution:
 
 [Code of Conduct](./CODE_OF_CONDUCT.md)
 
@@ -24,7 +24,7 @@ The main challenges were figuring out how to manipuate the JSON database without
 
 With instruction from [Filipe Laborde-Basto](https://github.com/c0dehot) and [Daniel Cabellos](https://github.com/shibeknight)
 
-## License:
+## ☕ License:
 
 For more information about the license, click on the link below.
 
@@ -40,7 +40,7 @@ For additional questions please reach out to me at: lhalvorson34@gmail.com.
 
 ---
 
-## Links
+## 🎯 Links
 
 [Deployed Eat-Da-Burger Website](https://powerful-citadel-42030.herokuapp.com/)
 
