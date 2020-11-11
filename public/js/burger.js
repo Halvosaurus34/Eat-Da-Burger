@@ -8,5 +8,6 @@ async function eatBurger(burgerName, devoured, burgerId){
     console.log("EATING BURGER: ",burgerName, devoured, burgerId)
     const result = await $.post('/api/burger/update', {burgerName: burgerName, devoured: devoured, id: burgerId})
     console.log('eat burger function result',result)
+    location.reload()
 }
 

@@ -6,7 +6,7 @@
   <ul class="list-group listItem">
     {{#each devoured}}
     <li class="list-group-item p-0 mb-3 listItem">
-      <p class="m-0 p-0">
+      <p class="ml-3 p-0">
         {{this.burger_name}}
                   <button class="btn btn-danger float-right p-2 m-0" onClick="eatBurger('{{this.burger_name}}',0,{{this.id}})">Make one!</button>
       </p>
@@ -19,7 +19,7 @@
   <ul class="list-group">
     {{#each notDevoured}}
     <li class="list-group-item p-0 mb-3 listItem">
-      <p class="m-0 p-0">
+      <p class="ml-3 p-0">
         {{this.burger_name}} 
           <button class="btn btn-danger float-right p-2 m-0" onClick="eatBurger('{{this.burger_name}}',1,{{this.id}})">Eat!</button>
       </p>
