@@ -42,7 +42,7 @@ For additional questions please reach out to me at: lhalvorson34@gmail.com.
 
 ## 🎯 Links
 
-[Deployed Eat-Da-Burger Website](https://powerful-citadel-42030.herokuapp.com/)
+[Deployed Eat-Da-Burger Website](https://mighty-plains-09703.herokuapp.com/)
 
 ---
 
