@@ -1,0 +1,21 @@
+.background {
+    background-color: #e5cb7a;
+}
+
+.title {
+    color: #450101;
+}
+
+.listItem {
+    background-color: #ec3521;
+}
+
+.addItem {
+    background-color:#450101;
+    color:#32c704
+}
+
+.lettuce {
+    background-color: #32c704;
+    height:50px
+}

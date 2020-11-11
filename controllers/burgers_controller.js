@@ -17,12 +17,11 @@ function router( app ){
                 devoured.push(element)
             }
         });
-        console.log("DEVOURED ARRAY:",devoured)
-        console.log("notDevoured array: ", notDevoured)
+        // console.log("DEVOURED ARRAY:",devoured)
+        // console.log("notDevoured array: ", notDevoured)
         if( !burgerData ){
             return res.send( { status: false, message: 'Sorry unknown user or wrong password' } );
         }
-
         // console.log('Retreived Burger Data!', burgerData);
         res.render("index", {devoured: devoured, notDevoured: notDevoured})
         // res.send(burgerData)
@@ -43,21 +42,39 @@ function router( app ){
         res.send("INSERT BURGER");
     } );
 
-    // app.post( '/api/burger/update', async function( req, res ){
-    //     console.log("UPDATE BURGER")
-    //     // const burgerName = req.body.burgerName
-    //     // const devoured = req.body.burgerName
-    //     // const burgerId = await burger.findId(burgerName)
-    //     // console.log("BURGER ID: ", burgerId)
-    //     // const updateBurger = await burger.updateOne(burgerName, devoured, burgerId[0].id);
-    //     // console.log( 'UPDATE BURGER', updateBurger );
+    app.post( '/api/burger/update', async function( req, res ){
+        console.log("UPDATE BURGER")
+        const burgerName = req.body.burgerName
+        console.log(burgerName)
+        const isDevoured = req.body.devoured
+        const burgerId = await burger.findOne(burgerName)
+        console.log("BURGER ID: ", burgerId)
+        const updateBurger = await burger.updateOne(burgerName, isDevoured, burgerId[0].id);
+        console.log( 'UPDATE BURGER', updateBurger );
 
-    //     // if( !updateBurger ){
-    //     //     return res.send( { status: false, message: 'Sorry failed to create the user, try later?' } );
-    //     // }
+        if( !updateBurger ){
+            return res.send( { status: false, message: 'Sorry failed to create the user, try later?' } );
+        }
+        devoured = []
+        notDevoured = []
+        const burgerData = await burger.selectAll();
+        // console.log( '[/api/burger] burgerData: ', burgerData);
+        burgerData.forEach(element => {
+            if(element.devoured == 0){
+                notDevoured.push(element)
+            } else{
+                devoured.push(element)
+            }
+        });
+        // console.log("DEVOURED ARRAY:",devoured)
+        // console.log("notDevoured array: ", notDevoured)
+        if( !burgerData ){
+            return res.send( { status: false, message: 'Sorry unknown user or wrong password' } );
+        }
+        // console.log('Retreived Burger Data!', burgerData);
+        res.render("index", {devoured: devoured, notDevoured: notDevoured})
 
-    //     res.send( "UPDATE BURGER");
-    // } );
+    } );
 
 }
 

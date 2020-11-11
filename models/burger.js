@@ -12,7 +12,8 @@ async function insertOne(burgerName){
 }
 
 async function updateOne(burgerName, devoured, burgerId){
-    const insertBurgers = await orm.insertOne(burgerName, devoured, burgerId)
+    console.log("INSERT BURGER: ", burgerName)
+    const insertBurgers = await orm.updateOne(burgerName, devoured, burgerId)
     return insertBurgers
 }
 
